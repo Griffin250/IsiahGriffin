@@ -1,13 +1,18 @@
-import Navbar from './components/pages/Navbar';
-
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import Navbar from "./components/pages/Navbar";
+import Footer from "./components/pages/Footer";
+import Contact from "./components/pages/Contact";
+import Home from "./components/pages/Home";
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+    <div className="bg-white dark:bg-black text-black dark:text-white">
       <Navbar />
-      <main className="text-center mt-20 text-gray-800 dark:text-white">
-        <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
-        <p className="mt-4 text-lg">Let's build something great together!</p>
-      </main>
+      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ContactForm" element={<Contact />} />
+        </Routes>
+      <Footer />
     </div>
   );
 }

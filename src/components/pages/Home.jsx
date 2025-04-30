@@ -1,9 +1,12 @@
 import React from 'react'
+import Hero from './Hero'
+import Contact from './Contact'
 
  const Home = () => {
   return (
     <div>
-        <h1 className='text-5xl text-blue-900'>Home</h1>
+       <Hero />
+       <Contact />
     </div>
   )
 }
