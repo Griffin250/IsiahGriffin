@@ -1,14 +1,26 @@
-import React from 'react'
-import Hero from './Hero'
-import Contact from './Contact'
+import React from "react";
+import Hero from "./Hero";
+import Contact from "./Contact";
+import About from "./About";
+import Education from "./Education";
+import Services from "./Services";
+import Portfolio from "./Portfolio";
+import Projects from "./Projects";
+import Experience from "./Experience";
+import SocialShowcase from "../layouts/SocialShowCase";
 
- const Home = () => {
+const Home = () => {
   return (
     <div>
-       <Hero />
-       <Contact />
-    </div>
-  )
-}
+      <Hero />
+      <SocialShowcase />
+      <Services />
 
-export default Home
+  
+
+      <Contact />
+    </div>
+  );
+};
+
+export default Home;

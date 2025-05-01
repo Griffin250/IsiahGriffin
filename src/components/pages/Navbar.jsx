@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed md:top-2 left-1/2 transform -translate-x-1/2 z-50 flex justify-between items-center w-full md:w-5/6 px-4 md:px-4 py-2 bg-white text-black md:rounded-2xl  shadow-md transition-transform duration-300 ${
+      className={`fixed md:top-2 left-1/2 transform -translate-x-1/2 z-50 flex justify-between items-center w-full md:w-5/6 px-2 md:px-4 py-2 bg-white text-black md:rounded-2xl  shadow-md transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-24"
       }`}
     >
@@ -63,15 +63,23 @@ export default function Navbar() {
           <img src={logo} className="w-14 h-14 bg-gray-900 rounded-lg" />{" "}
         </NavLink>
       </div>
-      <ul className="hidden md:flex gap-10 font-bold ">
+      <ul className="hidden md:flex gap-8 font-bold ">
         <li>
           <NavLink to="/" className="hover:text-orange-500 cursor-pointer">
-            HOME
+            Home
           </NavLink>
         </li>
         <li>
           <NavLink to="/about" className="hover:text-orange-500 cursor-pointer">
-            ABOUT
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/education"
+            className="hover:text-orange-500 cursor-pointer"
+          >
+            Education{" "}
           </NavLink>
         </li>
         <li>
@@ -79,15 +87,15 @@ export default function Navbar() {
             to="/portfolio"
             className="hover:text-orange-500 cursor-pointer"
           >
-            PORTFOLIO
+            Portfolio
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/services"
+            to="/Services"
             className="hover:text-orange-500 cursor-pointer"
           >
-            SERVICES
+            Services
           </NavLink>
         </li>
         <li>
@@ -95,7 +103,15 @@ export default function Navbar() {
             to="/projects"
             className="hover:text-orange-500 cursor-pointer"
           >
-            PROJECTS
+            Projects
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/blog"
+            className="hover:text-orange-500 cursor-pointer"
+          >
+            Blog
           </NavLink>
         </li>
       </ul>
@@ -110,13 +126,13 @@ export default function Navbar() {
             CONTACT ME
           </button>
         </NavLink>
-        <NavLink to="">
+        <NavLink to="github.com/IsiahGriffin" target="_blank">
           <FontAwesomeIcon
             icon={faSquareGithub}
             className="text-3xl cursor-pointer"
           />{" "}
         </NavLink>
-        <NavLink to="">
+        <NavLink to="linkedin.com/in/isiah-griffin" target="_blank">
           <FontAwesomeIcon
             icon={faLinkedin}
             className="text-3xl cursor-pointer"
