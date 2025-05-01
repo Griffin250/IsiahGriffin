@@ -1,26 +1,69 @@
 import { useState, useEffect } from "react";
 import logo from "../../assets/Isiahgriffin_logo.png";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faSquareGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => setDarkMode(!darkMode);
   const scrollToTop = () => {
     window.scrollTo({
-      top:0,
+      top: 0,
       behaiour: "smooth",
-    })
-  }
+    });
+  };
+
+  const [darkMode, setDarkMode] = useState(() => {
+    // check localStorage or default to false
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+
+    setDarkMode(newDarkMode);
+    localStorage.setItem("theme", newDarkMode ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", newDarkMode);
+  };
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
+    const html = document.documentElement;
+
+    if (darkMode) {
+      html.classList.add("dark-mode");
+    } else {
+      html.classList.remove("dark-mode");
+    }
   }, [darkMode]);
 
+  //check for scroll positions and hide or show navbar
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        setShowNavbar(false); // scrolling down
+      } else {
+        setShowNavbar(true); // scrolling up
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-white dark:bg-black text-black dark:text-white shadow-md">
+    <nav
+      className={`fixed md:top-2 left-1/2 transform -translate-x-1/2 z-50 flex justify-between items-center w-full md:w-5/6 px-4 md:px-4 py-2 bg-white text-black md:rounded-2xl  shadow-md transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-24"
+      }`}
+    >
       <div className="text-2xl font-bold flex items-center gap-2">
-        <img src={logo} className="w-14 h-14" />
+        <NavLink to="/" className="cursor-pointer">
+          <img src={logo} className="w-14 h-14 bg-gray-900 rounded-lg" />{" "}
+        </NavLink>
       </div>
-      <ul className="hidden md:flex gap-6 font-bold">
+      <ul className="hidden md:flex gap-10 font-bold ">
         <li>
           <NavLink to="/" className="hover:text-orange-500 cursor-pointer">
             HOME
@@ -32,27 +75,52 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/portfolio" className="hover:text-orange-500 cursor-pointer">
+          <NavLink
+            to="/portfolio"
+            className="hover:text-orange-500 cursor-pointer"
+          >
             PORTFOLIO
           </NavLink>
         </li>
         <li>
-          <NavLink to="/services" className="hover:text-orange-500 cursor-pointer">
+          <NavLink
+            to="/services"
+            className="hover:text-orange-500 cursor-pointer"
+          >
             SERVICES
           </NavLink>
         </li>
         <li>
-          <NavLink to="/projects" className="hover:text-orange-500 cursor-pointer">
+          <NavLink
+            to="/projects"
+            className="hover:text-orange-500 cursor-pointer"
+          >
             PROJECTS
           </NavLink>
         </li>
       </ul>
       <div className="flex items-center gap-4">
-        <NavLink className=" cursor-pointer " to="/contactForm" onClick={scrollToTop()}>
+        <NavLink
+          className=" cursor-pointer "
+          to="/contactForm"
+          onClick={scrollToTop}
+        >
           {" "}
           <button className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold cursor-pointer">
             CONTACT ME
           </button>
+        </NavLink>
+        <NavLink to="">
+          <FontAwesomeIcon
+            icon={faSquareGithub}
+            className="text-3xl cursor-pointer"
+          />{" "}
+        </NavLink>
+        <NavLink to="">
+          <FontAwesomeIcon
+            icon={faLinkedin}
+            className="text-3xl cursor-pointer"
+          />
         </NavLink>
         <label className="relative inline-flex items-center cursor-pointer">
           <input
@@ -62,7 +130,8 @@ export default function Navbar() {
             onChange={toggleDarkMode}
             checked={darkMode}
           />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none dark:bg-gray-700 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-600"></div>
+
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none dark:bg-gray-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-600"></div>
         </label>
       </div>
     </nav>

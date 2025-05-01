@@ -1,13 +1,21 @@
-import React from 'react';
-
+import React from "react";
+import "../../../src/index.css";
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl bg-gray-900 p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center text-orange-500">Contact Me</h2>
+    <div
+      className="min-h-screen flex items-center justify-center p-4"
+      data-aos="fade-up "
+      data-aos-duration="1000"
+    >
+      <div className="w-full max-w-2xl p-8 rounded-lg shadow-lg bg-gray-900">
+        <h2 className="text-3xl font-bold mb-6 text-center text-orange-500">
+          Contact Me
+        </h2>
         <form className="space-y-6">
           <div>
-            <label className="block mb-1 text-sm font-semibold">Name</label>
+            <label className="block mb-1 text-sm font-semibold text-gray-200">
+              Name
+            </label>
             <input
               type="text"
               placeholder="Your name"
@@ -15,7 +23,9 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label className="block mb-1 text-sm font-semibold">Email</label>
+            <label className="block mb-1 text-sm font-semibold text-gray-200">
+              Email
+            </label>
             <input
               type="email"
               placeholder="you@example.com"
@@ -23,7 +33,9 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label className="block mb-1 text-sm font-semibold">Message</label>
+            <label className="block mb-1 text-sm font-semibold text-gray-200">
+              Message
+            </label>
             <textarea
               rows="5"
               placeholder="Your message"
