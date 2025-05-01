@@ -7,7 +7,7 @@ import Services from "./Services";
 import Portfolio from "./Portfolio";
 import Projects from "./Projects";
 import Experience from "./Experience";
-import SocialShowcase from "../layouts/SocialShowCase";
+import SocialShowcase from "../layouts/SocialShowcase";
 
 const Home = () => {
   return (
@@ -16,8 +16,12 @@ const Home = () => {
       <SocialShowcase />
       <Services />
 
-  
-
+      <About />
+      <Education />
+      <Portfolio />
+      <Projects />
+      <Experience />
+      
       <Contact />
     </div>
   );
