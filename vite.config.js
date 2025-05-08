@@ -14,7 +14,9 @@ export default defineConfig({
           "./src/**/*.{js,jsx,ts,tsx}"
         ],
         theme: {
-          extend: {},
+          extend: {
+            
+          },
         },
         plugins: [],
       }
